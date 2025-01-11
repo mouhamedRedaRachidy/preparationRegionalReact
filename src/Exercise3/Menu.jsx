@@ -1,14 +1,15 @@
-import { Link, Route, Routes } from "react-router-dom"
+import { Link, Route, Routes, useLocation } from "react-router-dom"
 import AddPays from "./AddPays"
 import ListPays from "./ListPays"
 import { useState } from "react";
+import DetailPaye from "./Components/DetailPaye";
 
 const Menu = () => {
-    const [isCollapsed, setIsCollapsed] = useState(true);
-
-    const toggleNavbar = () => {
-        setIsCollapsed(prevState => !prevState);
-    };
+    const location=useLocation()
+    const [link,setLink]=useState('')
+    const handelClickLink=(link)=>{
+        setLink(link)
+    }
     return (
         <>
             <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -28,10 +29,10 @@ const Menu = () => {
                     <div className="collapse navbar-collapse d-flex justify-content-center" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-center w-100">
                             <li className="nav-item mx-3">
-                                <Link to={'/'} className="nav-link active">Liste Pays</Link>
+                                <Link to={'/'} onClick={()=>handelClickLink('list')} className={`nav-link ${location.pathname==="/"?'active text-info':''}`}>Liste Pays</Link>
                             </li>
                             <li className="nav-item">
-                                <Link to={'/add/pays'} className="nav-link">Ajouter Paye</Link>
+                                <Link to={'/add/pays'} onClick={()=>handelClickLink('add')} className={`nav-link ${location.pathname==="/add/pays"?'active text-info':''}`}>Ajouter Paye</Link>
                             </li>
                         </ul>
                         <form className="d-flex" role="search">
@@ -47,6 +48,7 @@ const Menu = () => {
             <Routes>
                 <Route index element={<ListPays />} />
                 <Route path='/add/pays' element={<AddPays />} />
+                 <Route path='/showPay/:id' element={<DetailPaye/>}/>
             </Routes>
         </>
     )

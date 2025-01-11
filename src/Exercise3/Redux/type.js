@@ -11,3 +11,9 @@ export const ActionAddCity=(newCity,idPays)=>(
         payload:{newCity,idPays}
     }
 )
+export const ActionDeletePays=(id)=>(
+    {
+        type:'deletePaye',
+        payload:{id}
+    }
+)
