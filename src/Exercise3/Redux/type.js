@@ -5,7 +5,7 @@ export const ActionAddPays=(newPays)=>(
     }
 )
 
-export const ActionAddCity=(newCity,idPays)=>(
+export const ActionAddCity=(idPays,newCity)=>(
     {
         type:"addCity",
         payload:{newCity,idPays}

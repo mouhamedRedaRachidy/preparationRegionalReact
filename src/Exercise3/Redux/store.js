@@ -24,7 +24,7 @@ const loadFromLocalStorage = () => {
 
 
 const preisetdState=loadFromLocalStorage()
-const store=createStore(reducer,preisetdState)
+const store=createStore(reducer,preisetdState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 store.subscribe(()=>{
     saveToLocalStorage(store.getState())

@@ -3,11 +3,12 @@ import AddPays from "./AddPays"
 import ListPays from "./ListPays"
 import { useState } from "react";
 import DetailPaye from "./Components/DetailPaye";
+import AddCity from "./AddCity";
 
 const Menu = () => {
-    const location=useLocation()
-    const [link,setLink]=useState('')
-    const handelClickLink=(link)=>{
+    const location = useLocation()
+    const [link, setLink] = useState('')
+    const handelClickLink = (link) => {
         setLink(link)
     }
     return (
@@ -29,10 +30,13 @@ const Menu = () => {
                     <div className="collapse navbar-collapse d-flex justify-content-center" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-center w-100">
                             <li className="nav-item mx-3">
-                                <Link to={'/'} onClick={()=>handelClickLink('list')} className={`nav-link ${location.pathname==="/"?'active text-info':''}`}>Liste Pays</Link>
+                                <Link to={'/'} onClick={() => handelClickLink('list')} className={`nav-link ${location.pathname === "/" ? 'active text-info' : ''}`}>Liste Pays</Link>
                             </li>
                             <li className="nav-item">
-                                <Link to={'/add/pays'} onClick={()=>handelClickLink('add')} className={`nav-link ${location.pathname==="/add/pays"?'active text-info':''}`}>Ajouter Paye</Link>
+                                <Link to={'/add/pays'} onClick={() => handelClickLink('add')} className={`nav-link ${location.pathname === "/add/pays" ? 'active text-info' : ''}`}>Ajouter Paye</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to={'/add/city'} onClick={() => handelClickLink('add')} className={`nav-link ${location.pathname === "/add/city" ? 'active text-info' : ''}`}>Ajouter City</Link>
                             </li>
                         </ul>
                         <form className="d-flex" role="search">
@@ -48,7 +52,8 @@ const Menu = () => {
             <Routes>
                 <Route index element={<ListPays />} />
                 <Route path='/add/pays' element={<AddPays />} />
-                 <Route path='/showPay/:id' element={<DetailPaye/>}/>
+                <Route path='/showPay/:id' element={<DetailPaye />} />
+                <Route path="/add/city" element={<AddCity />} />
             </Routes>
         </>
     )
