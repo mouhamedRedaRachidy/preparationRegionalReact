@@ -4,6 +4,9 @@ import ListPays from "./ListPays"
 import { useState } from "react";
 import DetailPaye from "./Components/DetailPaye";
 import AddCity from "./AddCity";
+import ListCity from "./Redux/ListCity";
+import ListAnneePendent from "./ListAnneePendent";
+import ListPayePendent from "./ListPayePendent";
 
 const Menu = () => {
     const location = useLocation()
@@ -38,6 +41,9 @@ const Menu = () => {
                             <li className="nav-item">
                                 <Link to={'/add/city'} onClick={() => handelClickLink('add')} className={`nav-link ${location.pathname === "/add/city" ? 'active text-info' : ''}`}>Ajouter City</Link>
                             </li>
+                            <li className="nav-item">
+                                <Link to={'/list/annee'} onClick={() => handelClickLink('add')} className={`nav-link ${location.pathname === "/list/annee" ? 'active text-info' : ''}`}>Annee Pendent</Link>
+                            </li>
                         </ul>
                         <form className="d-flex" role="search">
                             <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
@@ -51,9 +57,13 @@ const Menu = () => {
 
             <Routes>
                 <Route index element={<ListPays />} />
+                <Route path="/list/city/:idCity" element={<ListCity />} />
                 <Route path='/add/pays' element={<AddPays />} />
                 <Route path='/showPay/:id' element={<DetailPaye />} />
                 <Route path="/add/city" element={<AddCity />} />
+                <Route path="/edit/city/:id" element={<AddCity />} />
+                <Route path="/list/annee" element={<ListAnneePendent />} />
+                <Route path="/list/annee/:annee" element={<ListPayePendent />} />
             </Routes>
         </>
     )
